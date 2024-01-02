@@ -5,6 +5,7 @@
     The second element is the square of the int/float v
     and should be annotated as a float."""
 
+
 import typing
 
 
