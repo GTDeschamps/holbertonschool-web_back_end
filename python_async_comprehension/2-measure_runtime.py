@@ -8,9 +8,8 @@ measure_runtime should measure the total runtime and return it.
 Notice that the total runtime is roughly 10 seconds, explain it to yourself.
 """
 
-import typing
+
 import asyncio
-import random
 import time
 
 async_comprehension = __import__('1-async_comprehension').async_comprehension
@@ -31,12 +30,8 @@ async def measure_runtime() -> float:
     start_time = time.time()
     # Execute async_comprehension four times in parallel using asyncio.gather
 
-    await asyncio.gather(
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension()
-    )
+    list =[async_comprehension() for _ in range(4)]
+    await asyncio.gather(*list)
 
     end_time = time.time()
     total_runtime = end_time - start_time
