@@ -4,10 +4,12 @@ based on the name"""
 
 
 def update_topics(mongo_collection, name, topics):
-    """ function Update topics"""
+    """ function Update topics to change documents"""
 
-    mongo_collection.update_many
+    uptodate = mongo_collection.update_many
     (
         {"name": name},
         {"$set": {"topics": topics}}
     )
+
+    return uptodate
