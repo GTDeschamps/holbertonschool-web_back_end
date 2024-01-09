@@ -1,0 +1,4 @@
+// Write a script that inserts a document in the collection school
+
+db.createCollection("School")
+db.school.insert({name: "Holberton School"})
