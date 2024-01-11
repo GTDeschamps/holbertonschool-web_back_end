@@ -41,29 +41,19 @@ class Server:
 
     def get_hyper_index(self, index: int = None,
                         page_size: int = 10) -> Dict[str, Union[int, List]]:
-        assert index is None or (isinstance(index, int) and index >= 0)
-        "Index must be a positive integer or None"
-        assert isinstance(page_size, int) and page_size > 0
-        "Page size must be an integer greater than 0"
+        """
+        method return a dictionary with the following key-value pairs
+        """
+        start_index = index if index is not None else 0
+        end_index = start_index + page_size - 1
 
-        dataset = self.dataset()
-        total_rows = len(dataset)
+        assert start_index >= 0
+        assert end_index < len(self.dataset())
 
-        if index is None:
-            index = 0
-        elif index >= total_rows:
-            return {}
-
-        start_index = index
-        end_index = min(start_index + page_size - 1, total_rows - 1)
-
-        if start_index >= total_rows:
-            return {}
-        else:
-            return {
-                "index": start_index,
-                "next_index": end_index + 1
-                if end_index < total_rows - 1 else None,
-                "page_size": page_size,
-                "data": dataset[start_index:end_index + 1]
-            }
+        return {
+            "index": start_index,
+            "data": [self.dataset()[i] for i in range(
+                    start_index, min(end_index + 1, len(self.dataset())))],
+            "page_size": page_size,
+            "next_index": end_index + 1
+        }
