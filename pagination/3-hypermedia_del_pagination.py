@@ -50,10 +50,13 @@ class Server:
         assert start_index >= 0
         assert end_index < len(self.dataset())
 
+        data = [self.dataset()[i] for i in range(
+                    start_index, min(end_index + 1, len(self.dataset())))]
+        next_index = end_index + 1
+
         return {
-            "index": start_index,
-            "data": [self.dataset()[i] for i in range(
-                    start_index, min(end_index + 1, len(self.dataset())))],
-            "page_size": page_size,
-            "next_index": end_index + 1
+            'index': start_index,
+            'data': data,
+            'page_size': page_size,
+            'next_index': next_index
         }
