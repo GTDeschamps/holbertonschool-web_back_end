@@ -11,6 +11,11 @@ from typing import List
 Server = __import__('1-simple_pagination').Server
 
 
+class Server:
+    """Server class to paginate a database of popular baby names.
+    """
+    DATA_FILE = "Popular_Baby_Names.csv"
+
 def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     assert isinstance(page, int) and page > 0
     "Page number must be an integer greater than 0"
