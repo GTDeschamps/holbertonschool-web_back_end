@@ -1,8 +1,8 @@
 export default class Airport {
   constructor(name, code) {
-    if (typeof name !== `string`){
-      this._name = this.validateString(name, 'name');
-      this._code = this.validateString(code, 'code');
+    if (typeof name !== 'string') {
+      this._name = name;
+      this._code = code;
     }
   }
 
@@ -10,7 +10,7 @@ export default class Airport {
     return this._name;
   }
 
-  set name(value) {
+  set name(name) {
     this._name = name;
   }
 
@@ -18,7 +18,7 @@ export default class Airport {
     return this._code;
   }
 
-  set code(value) {
+  set code(code) {
     this._code = code;
   }
 
