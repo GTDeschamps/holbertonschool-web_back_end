@@ -9,7 +9,7 @@ export default class Airport {
   }
 
   set name(value) {
-    this._name = this.validateString(value, 'name');
+    this._name = name;
   }
 
   get code() {
@@ -17,17 +17,10 @@ export default class Airport {
   }
 
   set code(value) {
-    this._code = this.validateString(value, 'code');
+    this._code = code;
   }
 
   toString() {
     return this._code;
-  }
-
-  validateString(value, attribute) {
-    if (typeof value !== 'string') {
-      throw new Error(`${attribute} must be a string.`);
-    }
-    return value;
   }
 }
