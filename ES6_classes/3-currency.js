@@ -1,4 +1,4 @@
-class Currency {
+export default class Currency {
   constructor(code, name) {
     this._code = this.validateString(code, 'code');
     this._name = this.validateString(name, 'name');
