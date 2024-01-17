@@ -2,24 +2,30 @@ import Currency from './3-currency';
 
 export default class Pricing {
   constructor(amount, currency) {
-    this._amount = this.validateNumber(amount, 'amount');
-    this._currency = this.validateCurrency(currency, 'currency');
+    if (typeof amount !== 'number') {
+      throw new Error('amount must be a valid number.');
+    }
+    if (!(currency instanceof Currency)) {
+      throw new Error('Currency must be an instance of Currency.');
+    }
+    this._amount = amount;
+    this._currency = currency;
   }
 
   get amount() {
     return this._amount;
   }
 
-  set amount(value) {
-    this._amount = this.validateNumber(value, 'amount');
+  set amount(amount) {
+    this._amount = amount;
   }
 
   get currency() {
     return this._currency;
   }
 
-  set currency(value) {
-    this._currency = this.validateCurrency(value, 'currency');
+  set currency(currency) {
+    this._currency = currency;
   }
 
   displayFullPrice() {
@@ -28,19 +34,5 @@ export default class Pricing {
 
   static convertPrice(amount, conversionRate) {
     return amount * conversionRate;
-  }
-
-  validateNumber(value, attribute) {
-    if (typeof value !== 'number' || isNaN(value)) {
-      throw new Error(`${attribute} must be a valid number.`);
-    }
-    return value;
-  }
-
-  validateCurrency(value, attribute) {
-    if (!(value instanceof Currency)) {
-      throw new Error(`${attribute} must be an instance of Currency.`);
-    }
-    return value;
   }
 }
