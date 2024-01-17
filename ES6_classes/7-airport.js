@@ -1,9 +1,10 @@
 export default class Airport {
   constructor(name, code) {
     if (typeof name !== 'string') {
-      this._name = name;
-      this._code = code;
+      throw new TypeError(`name must be a string`)
     }
+    this._name = name;
+    this._code = code;
   }
 
   get name() {
