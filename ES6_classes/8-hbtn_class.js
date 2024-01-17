@@ -1,7 +1,10 @@
 export default class HolbertonClass {
   constructor(size, location) {
-    if (typeof value !== 'number' || isNaN(value) || value <= 0) {
-      throw new Error(`${attribute} must be a valid positive number.`);
+    if (typeof size !== 'number') {
+      throw new Error('size must be a number.');
+    }
+    if (typeof location !== 'number') {
+      throw new Error('location must be a number.');
     }
     this._size = size;
     this._location = location;
@@ -23,7 +26,11 @@ export default class HolbertonClass {
     this._location = location;
   }
 
-  valueOf = () => this._size;
+  valueOf() {
+    return this._size;
+  }
 
-  toString = () => this._location;
+  toString() {
+    return this._location;
+  }
 }
