@@ -1,11 +1,5 @@
 export default class HolbertonClass {
   constructor(size, location) {
-    if (typeof size !== 'number') {
-      throw new Error('size must be a number.');
-    }
-    if (typeof location !== 'number') {
-      throw new Error('location must be a number.');
-    }
     this._size = size;
     this._location = location;
   }
