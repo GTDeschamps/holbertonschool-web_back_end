@@ -7,5 +7,5 @@ export default function createInt8TypedArray(length, position, value) {
 
   view[position] = value;
 
-  return buffer;
+  return new DataView(buffer);
 }
